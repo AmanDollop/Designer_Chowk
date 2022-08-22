@@ -133,7 +133,7 @@ class EditProfileView extends GetView<EditProfileController> {
                         ),
                         SizedBox(height: size.width * 0.064),
                         Text(
-                          "Mobile Number",
+                          "Mobile Number".tr,
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1

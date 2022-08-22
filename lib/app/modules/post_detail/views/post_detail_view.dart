@@ -2,10 +2,11 @@ import 'package:designer_chock/app/data/Comman/comman_uri.dart';
 import 'package:designer_chock/app/data/views/comment_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import '../controllers/post_detail_controller.dart';
 
 class PostDetailView extends GetView<PostDetailController> {
-  PostDetailView({Key? key}) : super(key: key);
+  const PostDetailView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +69,7 @@ class PostDetailView extends GetView<PostDetailController> {
                                                   .colorScheme
                                                   .background),
                                     ),
-                                    VerticalDivider(thickness: 2),
+                                    const VerticalDivider(thickness: 2),
                                     Text(
                                       (controller.data.value?.createDate ?? "")
                                           .toString(),
@@ -122,9 +123,15 @@ class PostDetailView extends GetView<PostDetailController> {
                                     color: Theme.of(context)
                                         .colorScheme
                                         .background),
-                                child: const Icon(
-                                  Icons.share,
-                                  size: 15,
+                                child: InkWell(
+                                  onTap: () {
+                                    Share.share(
+                                        'check out my website https://example.com');
+                                  },
+                                  child: Icon(
+                                    Icons.share,
+                                    size: 15,
+                                  ),
                                 ),
                               ),
                             ),

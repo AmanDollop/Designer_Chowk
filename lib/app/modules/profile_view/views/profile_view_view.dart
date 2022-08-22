@@ -46,24 +46,29 @@ class ProfileViewView extends GetView<ProfileViewController> {
                   icon: const Icon(Icons.notifications_none),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: size.height * 0.014,
-                      vertical: size.height * 0.014),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 11,
+                    vertical: 11,
+                  ),
                   child: Container(
-                    height: size.height * 0.0154,
-                    width: size.width * 0.035,
+                    height: 12,
+                    width: 14,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Theme.of(context).colorScheme.secondary),
-                    child: const Center(
+                        color:
+                        Theme.of(context).colorScheme.secondary),
+                    child: Center(
                         child: Text(
-                      "2",
-                      style: TextStyle(fontSize: 10),
-                    )),
+                          "2",
+                          style: TextStyle(
+                              fontSize: 10,
+                              color: Theme.of(context)
+                                  .scaffoldBackgroundColor),
+                        )),
                   ),
                 )
               ],
-            )
+            ),
           ],
         ),
         backgroundColor: Theme.of(context).colorScheme.background,

@@ -19,6 +19,7 @@ class ElevatedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           Blog blog = data[index];
           return Card(

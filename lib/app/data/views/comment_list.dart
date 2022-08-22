@@ -1,5 +1,5 @@
 import 'package:designer_chock/ApiData/blog_detail_data.dart';
-  import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:like_button/like_button.dart';
@@ -10,18 +10,17 @@ import '../Comman/comman_uri.dart';
 class CommentListPage extends StatelessWidget {
   final List<Comments> dataOne;
 
-  CommentListPage({Key? key, required this.dataOne}) : super(key: key);
+  const CommentListPage({Key? key, required this.dataOne}) : super(key: key);
 
   get imageProvider => null;
-
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      physics: NeverScrollableScrollPhysics(),
+        physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemBuilder: (context, index) {
-        Comments comments=dataOne.reversed.toList()[index];
+          Comments comments = dataOne.reversed.toList()[index];
           return Container(
             color: Theme.of(context).colorScheme.onPrimary,
             child: Column(
@@ -30,18 +29,20 @@ class CommentListPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   child: ListTile(
                     tileColor: Colors.white,
-                    leading:
-                    Container(
+                    leading: Container(
                       height: 45,
                       width: 45,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: comments.userProfile==''?AssetImage('images/mask_group.png'):NetworkImage(Constant.baseUri+comments.userProfile!) as ImageProvider,
+                          image: comments.userProfile == ''
+                              ? AssetImage('images/mask_group.png')
+                              : NetworkImage(
+                                      Constant.baseUri + comments.userProfile!)
+                                  as ImageProvider,
                         ),
                       ),
                     ),
-
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -78,15 +79,19 @@ class CommentListPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(left: 15),
-                  child: Text(
-                   comments.comment!,
-                    maxLines: 2,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        ?.copyWith(fontSize: 12),
-                    overflow: TextOverflow.ellipsis,
+                  padding: EdgeInsets.only(left: 20),
+                  child: Row(
+                    children: [
+                      Text(
+                        comments.comment!,
+                        maxLines: 2,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            ?.copyWith(fontSize: 12),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
                 ),
                 Divider(
@@ -107,24 +112,25 @@ class CommentListPage extends StatelessWidget {
                             children: [
                               LikeButton(
                                 size: 15,
-                                circleColor:  const CircleColor(
-                                    start: Color(0xff00ddff), end: Color(0xff0099cc)),
-                                bubblesColor:  const BubblesColor(
+                                circleColor: const CircleColor(
+                                    start: Color(0xff00ddff),
+                                    end: Color(0xff0099cc)),
+                                bubblesColor: const BubblesColor(
                                   dotPrimaryColor: Color(0xff33b5e5),
                                   dotSecondaryColor: Color(0xff0099cc),
                                 ),
                                 likeBuilder: (bool isLiked) {
                                   return Icon(
                                     Icons.thumb_up_alt_rounded,
-                                    color:
-                                    isLiked ? Colors.blue : Colors.grey,
+                                    color: isLiked ? Colors.blue : Colors.grey,
                                     size: 15,
                                   );
                                 },
                                 likeCount: 0,
-                                countBuilder: (int? count, bool isLiked, String text) {
+                                countBuilder:
+                                    (int? count, bool isLiked, String text) {
                                   var color =
-                                  isLiked ? Colors.blue : Colors.grey;
+                                      isLiked ? Colors.blue : Colors.grey;
                                   Widget result;
                                   if (count != 0) {
                                     result = Text(
@@ -132,7 +138,8 @@ class CommentListPage extends StatelessWidget {
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyText2
-                                          ?.copyWith(fontSize: 14, color: color),
+                                          ?.copyWith(
+                                              fontSize: 14, color: color),
                                     );
                                   } else {
                                     result = Text(
@@ -140,7 +147,8 @@ class CommentListPage extends StatelessWidget {
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyText2
-                                          ?.copyWith(fontSize: 14, color: color),
+                                          ?.copyWith(
+                                              fontSize: 14, color: color),
                                     );
                                   }
                                   return result;
@@ -154,7 +162,7 @@ class CommentListPage extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 20),
                         child: Expanded(
                           child: Row(
-                           mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Container(
                                 height: 15,
